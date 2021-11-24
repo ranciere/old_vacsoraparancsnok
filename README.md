@@ -8,4 +8,4 @@ Te meg falatozhatsz tovább nyugodtan. Az sem baj, ha a te gyerekeidet másképp
 
 A Vacsoraparancsnok megmenti az estéd! 😍🥐
 
-Credits: Hanák Dávid
+Credits: @dhanak
