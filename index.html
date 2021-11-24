@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Vacsoraparancsnok</title>
+    <style type="text/css">
+      body {
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+      }
+      * {
+          font-size: 14pt;
+      }
+      h1 {
+          font-size: 24px;
+          margin: 1ex auto;
+          text-align: center;
+          text-transform: uppercase;
+      }
+      #buttons {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 25% 25% 25% 25%;
+          align-content: center;
+          justify-content: center;
+      }
+      label {
+          text-align: center;
+          margin: 10px auto;
+      }
+      button {
+          width: 90%;
+          height: 3.5em;
+          margin: 10px auto;
+          grid-column-end: span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Vacsoraparancsnok</h1>
+    <div id="buttons">
+      <label><input type="radio" name="child" value="Lilla" checked>Lilla</label>
+      <label><input type="radio" name="child" value="Peti">Peti</label>
+      <button>😶 Csukott szájjal egyél!</button>
+      <button>🥘 Egyél!</button>
+      <button>🙃 Fordulj előre!</button>
+      <button>🚶Gyere vissza!</button>
+      <button>🍽 Hajolj a tányér fölé!</button>
+      <button>😴 Kelj fel az asztalról!</button>
+      <button>🔇 Maradj csöndben!</button>
+      <button>🛑 Ne csináld már!</button>
+      <button>📢 Ne kiabálj!</button>
+      <button>🤏 Ne piszkáld a testvéred!</button>
+      <button>🍞 Nem repül a kenyér!</button>
+      <button>🥤 Tedd le a poharat!</button>
+      <button>🦶 Tedd le a lábad!</button>
+      <button>🪑 Ülj le!</button>
+    </div>
+    <script>
+      function speak(text) {
+          var utter = new SpeechSynthesisUtterance(text);
+          var voice = window.speechSynthesis.getVoices().find(
+              v => v.lang.startsWith('hu'));
+          utter.voice = voice;
+          window.speechSynthesis.speak(utter);
+      }
+
+      Array.from(document.getElementsByTagName('button')).forEach(
+          function (btn) {
+              var command = btn.innerText.
+                  replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
+              btn.addEventListener('click', function () {
+                  var child = document.querySelector('input:checked').value;
+                  speak(child + ', ' + command);
+              });
+          }
+      );
+    </script>
+  </body>
+</html>
