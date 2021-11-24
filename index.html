@@ -65,6 +65,7 @@
           var voice = window.speechSynthesis.getVoices().find(
               v => v.lang.startsWith('hu'));
           utter.voice = voice;
+          utter.lang = voice.lang;
           window.speechSynthesis.speak(utter);
       }
 
